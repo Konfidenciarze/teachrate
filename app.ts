@@ -9,7 +9,6 @@ import { User } from './routes/user';
 const mongoose = require('mongoose');
 
 const app = express();
-const port = 3000;
 
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/teachrater';
 
@@ -30,6 +29,8 @@ app.use(express.static(__dirname+'/public'));
 
 app.use('', Auth);
 app.use('/user', User)
+
+const port = process.env.PORT || 3000;
 
 app.listen(port, ()=>{
     console.log(`app runs on port ${port}`);
