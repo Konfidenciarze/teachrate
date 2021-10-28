@@ -10,11 +10,11 @@ Auth.get('/login', (req: Request, res: Response)=>{
 })
 
 Auth.post('/login', (req: Request, res: Response)=>{
-    res.redirect('/');
+    res.redirect('/user/profile/131232');
 })
 
 Auth.post('/register', (req: Request, res: Response)=>{
-    res.redirect('/');
+    res.redirect('/user/profile/131232');
 })
 
 export { Auth }
