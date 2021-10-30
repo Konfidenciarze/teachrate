@@ -1,0 +1,58 @@
+<%- include ('partials/htmlHeader') %>
+
+<script src="/scripts/validation.js"></script>
+<div class="d-flex align-items-center min-vh-100 grad-anim">
+	<div class="container">
+	  <div class="row justify-content-md-center">
+		<div class="col-lg-3">	  
+		</div>
+		<div class="col-lg-6">
+			<span>
+				<div class="bg-light borderList" style="padding: 40px">	
+					<form action="/register" onsubmit="return validateRegister()" method="POST" id="reg-form" enctype="multipart/form-data">					
+						<center><span id="informacja"></span></center>
+
+						<div class="form-floating mb-3" aria-describedby="LoginInfo"> 
+							<input type="text" name="username" class="form-control" id="login" placeholder="Login"  required>
+							<label for="login">Login</label>
+									<div id="LoginInfo" class="form-text">
+										Login nie może zawierać spacji.
+									</div>			
+									<span class="validateInfo" id="ValidateLoginInfo" >
+									</span>	
+						</div>
+						
+						<div class="form-floating mb-3" aria-describedby="PasswordInfo">
+							<input type="password" name="password" class="form-control" id="newPassword1" placeholder="Password" minlength="8" maxlength="32"  required>
+							<label for="haslo">Hasło</label>
+									<div id="PasswordInfo" class="form-text">
+										Hasło nie może zawierać spacji i musi zawierać od 8 do 32 znaków.
+									</div>	
+									<span class="validateInfo" id="ValidatePassInfo" >
+									</span>									
+						</div>
+
+						<div class="form-floating mb-3">
+							<input type="password" class="form-control" id="newPassword2" placeholder="Confirm password" minlength="8" maxlength="32" required>
+							<label for="haslo2">Zatwierdź Hasło</label>
+							<span class="validateInfo" id="ValidatePass2Info" >
+							</span>
+						</div>
+						<div>
+							<input type="file" name="profilePic">
+						</div>
+
+						<center>
+							<button class="btn btn-outline-secondary" type="submit">Zarejestruj się</button>
+						</center>
+					</form>
+				</div>	
+			</span>
+		</div>
+		<div class="col-lg-3">
+		</div>
+	 </div>
+	</div>
+</div>
+
+<%- include ('partials/htmlFooter') %>
