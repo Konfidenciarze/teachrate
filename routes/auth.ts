@@ -9,6 +9,10 @@ Auth.get('/login', (req: Request, res: Response)=>{
     res.render('login');
 })
 
+Auth.get('/register', (req, res)=>{
+	 res.render("register");
+})
+
 Auth.post('/login', (req: Request, res: Response)=>{
     res.redirect('/user/profile/131232');
 })
