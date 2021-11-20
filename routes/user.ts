@@ -1,8 +1,8 @@
 import express, {Request, Response}  from "express";
-const User = express.Router();
+const Users = express.Router();
 
-User.get('/:id', (req: Request, res: Response)=>{
+Users.get('/:id', (req: Request, res: Response)=>{
     res.render('user')
 })
 
-export { User }
+export { Users }
