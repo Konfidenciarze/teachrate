@@ -16,7 +16,6 @@ Auth.get('/register', (req, res)=>{
 })
 
 Auth.post('/login', passport.authenticate('local', {failureRedirect: '/login'}), (req: Request, res: Response)=>{
-    console.log(req.body)
     res.redirect('/')
 })
 
