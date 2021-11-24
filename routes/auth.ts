@@ -22,7 +22,6 @@ Auth.post('/login', passport.authenticate('local', {failureRedirect: '/login'}),
 Auth.post('/register', async(req: Request, res: Response)=>{
     try{
         const { username, password } = req.body;
-        console.log(username, password)
         const user = new User({username});
         const regUser = await User.register(user, password);
         req.login(regUser, err=>{
