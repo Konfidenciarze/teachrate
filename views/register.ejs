@@ -13,7 +13,7 @@
 						<center><span id="informacja"></span></center>
 
 						<div class="form-floating mb-3" aria-describedby="LoginInfo"> 
-							<input type="text" name="username" class="form-control" id="login" placeholder="Login"  required>
+							<input type="text" name='username' class="form-control" id="login" placeholder="Login"  required>
 							<label for="login">Login</label>
 									<div id="LoginInfo" class="form-text text-dark">
 										Login nie może zawierać spacji.
@@ -23,7 +23,7 @@
 						</div>
 						
 						<div class="form-floating mb-3" aria-describedby="PasswordInfo">
-							<input type="password" name="password" class="form-control" id="newPassword1" placeholder="Password" minlength="8" maxlength="32"  required>
+							<input type="password" name='password' class="form-control" id="newPassword1" placeholder="Password" minlength="8" maxlength="32"  required>
 							<label for="haslo">Hasło</label>
 									<div id="PasswordInfo" class="form-text text-dark">
 										Hasło nie może zawierać spacji i musi zawierać od 8 do 32 znaków.
@@ -46,6 +46,19 @@
 						<center>
 							<button class="btn btn-outline-dark" type="submit">Zarejestruj się</button>
 						</center>
+
+						<select name="prime" id="">
+							<option value="">Brak</option>
+							<%for(let i = 0; i < faculties.length; i++){%>
+								<option value="<%=faculties[i]%>"><%=faculties[i]%></option>
+							<%}%>
+						</select>
+						<select name="secondary" id="">
+							<option value="">Brak</option>
+							<%for(let i = 0; i < faculties.length; i++){%>
+								<option value="<%=faculties[i]%>"><%=faculties[i]%></option>
+							<%}%>
+						</select>
 					</form>
 				</div>	
 			</span>
