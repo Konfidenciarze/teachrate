@@ -8,21 +8,33 @@
 		</div>
 		<div class="col-lg-5">
 			<span>
-				<div class="bg-light borderList" style="padding: 40px">
+				<div class="formColors borderList" style="padding: 40px">
 					<form action="/login" method="POST">
 						
+						Login
 						<div class="form-floating mb-3"> 
 							<input type="text" class="form-control" id="floatingInput" placeholder="Login" name='username'>
-							<label for="floatingInput">Login</label>
+							<label for="floatingInput">przyklad@email.pl</label>
 						</div>
-
+						Hasło
 						<div class="form-floating mb-3">
 							<input type="password" class="form-control" id="floatingPassword" placeholder="Password" name='password'>
-							<label for="floatingPassword">Hasło</label>
+							<label for="floatingPassword">Haslo</label>
+						</div>
+						
+						<div class="container">
+							<div class="row">
+								<div class="col">
+									<input type="checkbox" class=form-control" id="stayLogged"> Zapamiętaj hasło
+								</div>
+								<div class="col">
+									<a class="nav-link active" aria-current="page" id="hasloForget" disabled>Zapomniałeś hasła?</a>
+								</div>
+							</div>
 						</div>
 
 						<center>
-							<button class="btn btn-outline-secondary ZalogujSubmit" type="submit">Zaloguj się</button>
+							<br><button class="btn btn-outline-dark ZalogujSubmit" type="submit">Zaloguj się</button>
 						</center>
 
 					</form>
