@@ -45,6 +45,19 @@
 						<center>
 							<button class="btn btn-outline-secondary" type="submit">Zarejestruj się</button>
 						</center>
+
+						<select name="prime" id="">
+							<option value="">Brak</option>
+							<%for(let i = 0; i < faculties.length; i++){%>
+								<option value="<%=faculties[i]%>"><%=faculties[i]%></option>
+							<%}%>
+						</select>
+						<select name="secondary" id="">
+							<option value="">Brak</option>
+							<%for(let i = 0; i < faculties.length; i++){%>
+								<option value="<%=faculties[i]%>"><%=faculties[i]%></option>
+							<%}%>
+						</select>
 					</form>
 				</div>	
 			</span>
