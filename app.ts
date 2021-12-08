@@ -2,7 +2,7 @@ if(process.env.NODE_ENV !== 'production'){
     require('dotenv').config()
 }
 
-import express from "express"
+import express, {Request, Response, NextFunction }from "express"
 
 import  Auth  from './routes/auth'
 import { Users } from './routes/user'
@@ -58,6 +58,10 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.use((req: Request, res: Response, next: NextFunction) => {
+    res.locals.currentUser = req.user;
+    next();
+})
 
 app.use('', Auth)
 app.use('/user', Users)
