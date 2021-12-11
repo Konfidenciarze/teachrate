@@ -1,8 +1,40 @@
 <%- include ('partials/htmlHeader') %>
     <h1>Oceniany</h1>
-    <div>
-        <img src="<%= teacher.img%>" alt="photo">
-        <p><%= teacher.pref%> <%= teacher.data%> <%= teacher.post%></p>
-        <p><%= teacher.position%> <%= teacher.faculty%></p>
+    <div class="container">
+        <div>
+            <img src="<%= teacher.img%>" alt="photo">
+            <p><%= teacher.pref%> <%= teacher.data%> <%= teacher.post%></p>
+            <p><%= teacher.position%> <%= teacher.faculty%></p>
+        </div>
+        <%if(currentUser){%>
+            <form action="/rate/<%=teacher._id%>/by/<%=currentUser._id%>" method="post">
+                <div>
+                    <p>Jak tłumaczy materiał</p>
+                    <input type="number" name="material" id="" min="1" max="5">
+                </div>
+                <div>
+                    <p>Jest punktualny/a</p>
+                    <input type="number" name="punctual" id="" min="1" max="5">
+                </div>
+                <div>
+                    <p>Łatwo u niego/niej zaliczyć</p>
+                    <input type="number" name="passing" id="" min="1" max="5">
+                </div>
+                <div>
+                    <p>Masz coś do dodania? Podziel się opinią</p>
+                    <textarea name="comment" id="" maxlength="255" minlength="0" cols="80" rows="10"></textarea>
+                </div>
+                <button type="submit">Wyślij</button>
+            </form>
+        <%}%>
+        <hr>
+        <h5>Komenty</h5>
+        <%= votes %>
+
+        <h6>Overall stats in percents</h6>
+
+        <%= overallStats.material%>
+        <%= overallStats.punctual%>
+        <%= overallStats.passing%>
     </div>
 <%- include ('partials/htmlFooter') %>
