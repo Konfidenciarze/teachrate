@@ -27,7 +27,17 @@ Rate.post('/:teacherId/by/:userId', isLoggedIn, async(req: Request, res: Respons
         if(!alreadyVoted){
             const teacher = await Teacher.findOne({_id: req.params.teacherId})
             const user = await User.findOne({_id: req.params.userId})
-            const newVote = new Rating({material, punctual, passing, comment, rater: user, teacher})
+            let tier = 1
+            if(user.prime === teacher.faculty){
+                tier = 10
+            }else if(user.secondary === teacher.faculty){
+                tier = 5
+            }else if(user.secondary === '' || user.prime === ''){
+                tier = 1
+            }else{
+                tier = 3
+            }
+            const newVote = new Rating({material, punctual, passing, comment, rater: user, teacher, tier})
             newVote.save()
         }
         res.redirect('/rate/browse')
@@ -38,9 +48,34 @@ Rate.post('/:teacherId/by/:userId', isLoggedIn, async(req: Request, res: Respons
 })
 
 Rate.get('/profile/:id', async(req: Request, res: Response)=>{
-    const { id } = req.params
-    const teacher = await Teacher.findOne({_id: id});
-    res.render('teacherProfile', {teacher});
+    try{
+        const { id } = req.params
+        const overallStats = {
+            material: 0,
+            punctual: 0,
+            passing: 0
+        }
+        const teacher = await Teacher.findOne({ _id: id });
+        const votes = await Rating.find({ teacher: id })
+            .populate('rater')
+            .sort({ tier: -1 })
+
+        for(let i = 0; i < votes.length; i++){
+            let t = votes[i].tier
+            overallStats.material += votes[i].material * t
+            overallStats.punctual += votes[i].punctual * t
+            overallStats.passing += votes[i].passing * t
+        }
+
+        overallStats.material /= 10 / votes.length
+        overallStats.punctual /= 10 / votes.length
+        overallStats.passing /= 10 / votes.length
+
+        res.render('teacherProfile', {teacher, votes, overallStats});
+    }catch(e){
+        console.log(e)
+        res.redirect('/rate/browse')
+    }
 })
 
 Rate.post('/profile/:id', (req: Request, res: Response)=>{

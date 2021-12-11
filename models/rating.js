@@ -8,7 +8,8 @@ const RatingSchema = new Schema({
     material: {type: Number, required: true},
     punctual: {type: Number, required: true},
     passing: {type: Number, required: true},
-    comment: {type: String, default: ''}
+    comment: {type: String, default: ''},
+    tier: {type: Number, default: 1}
 });
 
 module.exports = mongoose.model('Rating', RatingSchema);
