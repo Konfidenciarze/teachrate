@@ -2,14 +2,21 @@
 
 	<div class="d-flex align-items-center min-vh-100 grad-anim">
 		<div class="container p-3 borderList">
-		  <div class="row justify-content-md-center">
+		  <div class="row justify-content-md-center h-75">
 			<div class="col col-lg-5 d-flex flex-column justify-content-center align-items-center"> 
 				<h1>OCEŃ SWOICH PROWADZĄCYCH<h1>
 				<h3>Szybko, łatwo, bezboleśnie.</h3>
+					<%if(!currentUser){%>
 					<div class="col align-self-center">
 						<button type="button" class="btn" style='background-color:#E08751' onclick="location.href='/login'" value="Zaloguj się">Zaloguj się</button>
 						<button type="button" class="btn" style='background-color:#E08751' onclick="location.href='/register'" value="Zarejestruj się">Zarejestruj się</button>
 					</div>
+					<%}else{%>
+						<div class="col align-self-center">
+							<button type="button" class="btn" style='background-color:#E08751' onclick="location.href='/user/<%=currentUser._id%>'" value="Profil">Profil</button>
+							<button type="button" class="btn" style='background-color:#E08751' onclick="location.href='/rate/browse'" value="Zacznij Oceniać">Zacznij Oceniać</button>
+						</div>
+					<%}%>
 				</div>
 			<div class="col col-lg-4">
 				 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADgCAMAAAAt85rTAAAAA1BMVEX///+nxBvIAAAASElEQVR4nO3BMQEAAADCoPVPbQo/oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICXAcTgAAG6EJuyAAAAAElFTkSuQmCC" class="img-fluid" alt="kox svg studenta placeholder" >

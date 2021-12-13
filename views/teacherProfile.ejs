@@ -1,8 +1,121 @@
 <%- include ('partials/htmlHeader') %>
-    <h1>Oceniany</h1>
-    <div>
-        <img src="<%= teacher.img%>" alt="photo">
-        <p><%= teacher.pref%> <%= teacher.data%> <%= teacher.post%></p>
-        <p><%= teacher.position%> <%= teacher.faculty%></p>
-    </div>
+<link rel="stylesheet" href="/stylesheets/teacherProfile.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<div class="d-flex align-items-center min-vh-100 grad-anim">
+    <div class="container">
+	    <div class="row h-25 justify-content-center">
+			    <center><h1>Oceń prowadzącego</h1></center>
+		</div>
+        <div class="row formColors d-flex justify-content-center">
+			<div class="col">
+			   <img src="<%= teacher.img%>" alt="photo" style="float: right;">
+			</div>
+			<div class="col align-items-end">
+				<h1><p><%= teacher.pref%> <%= teacher.data%> <%= teacher.post%></p></h1>
+				<p><%= teacher.position%> <%= teacher.faculty%></p>
+			</div>
+		</div>
+        <%if(currentUser){%>
+        <div class="row h-25 formColors">
+			<form action="/rate/<%=teacher._id%>/by/<%=currentUser._id%>" method="post">
+                <div class="row d-flex">
+                    <div class="col-8 d-flex justify-content-end">
+					Jak oceniasz tłumaczenie materiału?&nbsp&nbsp&nbsp<br>
+					
+				<!--	Jak tłumaczy materiał -->
+					</div>
+					
+					<div class="w-100"></div>
+					<div class="col-8">
+					        <!--   <input type="number" name="material" id="" min="1" max="5"> -->
+						
+							<div class="star-widget">
+									<input type="radio" name="material-rate" id="material-rate-5">
+									<label for="material-rate-5" class="fas fa-star"></label>
+									<input type="radio" name="material-rate" id="material-rate-4">
+									<label for="material-rate-4" class="fas fa-star"></label>
+									<input type="radio" name="material-rate" id="material-rate-3">
+									<label for="material-rate-3" class="fas fa-star"></label>
+									<input type="radio" name="material-rate" id="material-rate-2">
+									<label for="material-rate-2" class="fas fa-star"></label>
+									<input type="radio" name="material-rate" id="material-rate-1">
+									<label for="material-rate-1" class="fas fa-star"></label>
+							</div> 
+							
+						
+					</div>
+
+                </div>
+                <div class="row d-flex">
+					<div class="col-8 d-flex justify-content-end">
+					Jak oceniasz punktualność wykładowcy?
+					
+                    <!-- <br>Jest punktualny/a -->
+					</div>
+						<!--   <input type="number" name="punctual" id="" min="1" max="5"> -->
+					<div class="w-100"></div>
+					
+					<div class="col-8">
+							<div class="star-widget">
+									<input type="radio" name="punctual-rate" id="punctual-rate-5">
+									<label for="punctual-rate-5" class="fas fa-star"></label>
+									<input type="radio" name="punctual-rate" id="punctual-rate-4">
+									<label for="punctual-rate-4" class="fas fa-star"></label>
+									<input type="radio" name="punctual-rate" id="punctual-rate-3">
+									<label for="punctual-rate-3" class="fas fa-star"></label>
+									<input type="radio" name="punctual-rate" id="punctual-rate-2">
+									<label for="punctual-rate-2" class="fas fa-star"></label>
+									<input type="radio" name="punctual-rate" id="punctual-rate-1">
+									<label for="punctual-rate-1" class="fas fa-star"></label>
+							</div> 
+					</div>
+                </div>
+                <div class="row d-flex">
+				
+					<div class="col-8 d-flex justify-content-end">
+				<!-- <br>Łatwo u niego/niej zaliczyć -->
+					Jak oceniasz łatwość zaliczenia?&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+					</div>
+                    
+					<div class="w-100"></div>
+					
+					<div class="col-8">
+					<!--   <input type="number" name="passing" id="" min="1" max="5"> -->
+				 			<div class="star-widget">
+								<input type="radio" name="pass-rate" id="pass-rate-5">
+								<label for="pass-rate-5" class="fas fa-star"></label>
+								<input type="radio" name="pass-rate" id="pass-rate-4">
+								<label for="pass-rate-4" class="fas fa-star"></label>
+								<input type="radio" name="pass-rate" id="pass-rate-3">
+								<label for="pass-rate-3" class="fas fa-star"></label>
+								<input type="radio" name="pass-rate" id="pass-rate-2">
+								<label for="pass-rate-2" class="fas fa-star"></label>
+								<input type="radio" name="pass-rate" id="pass-rate-1">
+								<label for="pass-rate-1" class="fas fa-star"></label>
+					
+							</div> 
+					</div>
+				</div>
+                <div>
+                    <br><p><center>Masz coś do dodania? Podziel się opinią</center></p>
+                    <center><textarea name="comment" id="" maxlength="255" minlength="0" cols="80" rows="10" class="form-control"></textarea></center>
+                </div>
+                <button type="submit" class="btn btn-login ZalogujSubmit">Wyślij</button>
+            </form>
+		</div>
+        <%}%>
+		<div class="row h-25 formColors">
+        <hr>
+        <h5>Komenty</h5>
+        <%= votes %>
+
+        <h6>Overall stats in percents</h6>
+
+        <%= overallStats.material%>
+        <%= overallStats.punctual%>
+        <%= overallStats.passing%>
+		</div>
+		</span>
+	</div>
+</div>
 <%- include ('partials/htmlFooter') %>
