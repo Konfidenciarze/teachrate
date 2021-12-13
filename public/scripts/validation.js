@@ -29,9 +29,16 @@ function validateLogin()
 		document.getElementById('ValidateLoginInfo').innerHTML=''
 		document.getElementById('login').style.backgroundColor=''
 		const login = document.getElementById('login').value 
+		var loginregex= /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		if(login.includes(' '))
 			{
-				document.getElementById('ValidateLoginInfo').innerHTML='Login nie może mieć spacji';
+				document.getElementById('ValidateLoginInfo').innerHTML='Adres e-mail nie może mieć spacji';
+				document.getElementById('login').style.backgroundColor='#F26760'
+				return false;
+			}
+		else if(!loginregex.test(login) )
+			{
+				document.getElementById('ValidateLoginInfo').innerHTML='Podano zle skonstruowany adres e-mail';
 				document.getElementById('login').style.backgroundColor='#F26760'
 				return false;
 			}
