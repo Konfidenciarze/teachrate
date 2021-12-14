@@ -7,21 +7,6 @@
             <p><%= teacher.position%> <%= teacher.faculty%></p>
         </div>
         <%if(currentUser){%>
-<<<<<<< Updated upstream
-            <form action="/rate/<%=teacher._id%>/by/<%=currentUser._id%>" method="post">
-                <div>
-                    <p>Jak tłumaczy materiał</p>
-                    <input type="number" name="material" id="" min="1" max="5">
-                </div>
-                <div>
-                    <p>Jest punktualny/a</p>
-                    <input type="number" name="punctual" id="" min="1" max="5">
-                </div>
-                <div>
-                    <p>Łatwo u niego/niej zaliczyć</p>
-                    <input type="number" name="passing" id="" min="1" max="5">
-                </div>
-=======
         <div class="row h-25 formColors">
 			<form action="/rate/<%=teacher._id%>/by/<%=currentUser._id%>" method="post">
                 <div class="row d-flex">
@@ -102,7 +87,6 @@
 							</div> 
 					</div>
 				</div>
->>>>>>> Stashed changes
                 <div>
                     <p>Masz coś do dodania? Podziel się opinią</p>
                     <textarea name="comment" id="" maxlength="255" minlength="0" cols="80" rows="10"></textarea>
