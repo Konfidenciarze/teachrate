@@ -5,7 +5,7 @@
   "main": "app.jss",
   "scripts": {
     "run-dev": "nodemon app.ts",
-    "build": "npm install && cd ./public && npm install && cd .. tsc",
+    "build": "npm install && cd ./public && npm install && cd .. && tsc",
     "start": "node app.js"
   },
   "repository": {
