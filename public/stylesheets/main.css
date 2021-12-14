@@ -13,3 +13,27 @@ body{
 {
 	background-color: #DEA252;
 }
+select {
+display: block;
+margin: 0 auto;
+}
+
+input[type=text]
+{
+	background-color: #FEFFB9;
+	color:#909169;
+}
+input[type=password]
+{
+	background-color: #FEFFB9;
+	color:#909169;
+}
+.btn-login
+{
+	background-color: #FEFFB9;
+	color: black;
+}
+.img-teacher
+{
+	width: 50%;
+}

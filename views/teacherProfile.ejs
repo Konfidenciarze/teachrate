@@ -1,11 +1,20 @@
 <%- include ('partials/htmlHeader') %>
-    <h1>Oceniany</h1>
+<link rel="stylesheet" href="/stylesheets/teacherProfile.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<div class="d-flex align-items-center min-vh-100 grad-anim">
     <div class="container">
-        <div>
-            <img src="<%= teacher.img%>" alt="photo">
-            <p><%= teacher.pref%> <%= teacher.data%> <%= teacher.post%></p>
-            <p><%= teacher.position%> <%= teacher.faculty%></p>
-        </div>
+	    <div class="row h-25 justify-content-center">
+			    <center><h1>Oceń prowadzącego</h1></center>
+		</div>
+        <div class="row formColors d-flex justify-content-center">
+			<div class="col">
+			   <img src="<%= teacher.img%>" alt="photo" style="float: right;">
+			</div>
+			<div class="col align-items-end">
+				<h1><p><%= teacher.pref%> <%= teacher.data%> <%= teacher.post%></p></h1>
+				<p><%= teacher.position%> <%= teacher.faculty%></p>
+			</div>
+		</div>
         <%if(currentUser){%>
         <div class="row h-25 formColors">
 			<form action="/rate/<%=teacher._id%>/by/<%=currentUser._id%>" method="post">
@@ -30,6 +39,7 @@
 									<input type="radio" name="material-2" id="material-rate-2">
 									<label for="material-rate-2" class="fas fa-star"></label>
 									<input type="radio" name="material-1" id="material-rate-1">
+
 									<label for="material-rate-1" class="fas fa-star"></label>
 							</div> 
 							
@@ -48,6 +58,7 @@
 					
 					<div class="col-8">
 							<div class="star-widget">
+
 									<input type="radio" name="punctual-5" id="punctual-rate-5">
 									<label for="punctual-rate-5" class="fas fa-star"></label>
 									<input type="radio" name="punctual-4" id="punctual-rate-4">
@@ -88,12 +99,14 @@
 					</div>
 				</div>
                 <div>
-                    <p>Masz coś do dodania? Podziel się opinią</p>
-                    <textarea name="comment" id="" maxlength="255" minlength="0" cols="80" rows="10"></textarea>
+                    <br><p><center>Masz coś do dodania? Podziel się opinią</center></p>
+                    <center><textarea name="comment" id="" maxlength="255" minlength="0" cols="80" rows="10" class="form-control"></textarea></center>
                 </div>
-                <button type="submit">Wyślij</button>
+                <button type="submit" class="btn btn-login ZalogujSubmit">Wyślij</button>
             </form>
+		</div>
         <%}%>
+		<div class="row h-25 formColors">
         <hr>
         <h5>Komenty</h5>
         <%= votes %>
@@ -103,5 +116,8 @@
         <%= overallStats.material%>
         <%= overallStats.punctual%>
         <%= overallStats.passing%>
-    </div>
+		</div>
+		</span>
+	</div>
+</div>
 <%- include ('partials/htmlFooter') %>
