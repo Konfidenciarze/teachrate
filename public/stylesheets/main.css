@@ -28,6 +28,7 @@ input[type=password]
 	background-color: #FEFFB9;
 	color:#909169;
 }
+
 .btn-login
 {
 	background-color: #FEFFB9;
@@ -36,4 +37,11 @@ input[type=password]
 .img-teacher
 {
 	width: 50%;
+}
+.searchResult:nth-child(even) {
+    background-color: #DEA252;
+}
+
+.searchResult:nth-child(odd) {
+	background-color: #f5dc69;
 }
