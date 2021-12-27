@@ -21,10 +21,11 @@
 	<%for(let i =0; i < votes.length; i++){%>
 		<div class="row justify-content-center searchResult align-items-center">
 				<div class="col-md-auto">
-					<img src="<%= votes[i].img%>" alt="photo" style="" class="img-fluid h-75">
+					<img src="<%= votes[i].teacher.img%>" alt="photo" style="" class="img-fluid h-75">
 				</div>
 				<div class="col align-items-end">
-				<h2><p>Osoba X</p></h2>
+				<h2><span><%= votes[i].teacher.pref%></span><p><%= votes[i].teacher.data%></p><span><%= votes[i].teacher.post%></span></h2>
+				<h4><span><%= votes[i].teacher.faculty%></span></h4>
 				<h3>
 					<p>Tłumaczenie materiału: <%= votes[i].material%>/5</p>
 					<p>Punktualność wykładowcy: <%= votes[i].punctual%>/5</p>
