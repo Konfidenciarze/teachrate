@@ -45,7 +45,7 @@ Rate.post('/:teacherId/by/:userId', isLoggedIn, async(req: Request, res: Respons
             const newVote = new Rating({material: ratings[0], punctual: ratings[1], passing: ratings[2], comment: req.body.comment, rater: user, teacher, tier})
             newVote.save()
         }
-        res.redirect('/rate/profile/'+req.params.teacherId)
+        res.redirect('/rate/browse')
     }catch(e){
         console.log(e)
         res.redirect('/rate/browse')
@@ -72,11 +72,22 @@ Rate.get('/profile/:id', async(req: Request, res: Response)=>{
             overallStats.passing += votes[i].passing * t
         }
 
-        overallStats.material /= 5 / votes.length
-        overallStats.punctual /= 5 / votes.length
-        overallStats.passing /= 5 / votes.length
+        overallStats.material /= 10 / votes.length
+        overallStats.punctual /= 10 / votes.length
+        overallStats.passing /= 10 / votes.length
 
         res.render('teacherProfile', {teacher, votes, overallStats});
+    }catch(e){
+        console.log(e)
+        res.redirect('/rate/browse')
+    }
+})
+
+Rate.get('/profile/:id/rate', isLoggedIn, async(req: Request, res: Response)=>{
+    try{
+        const { id } = req.params
+        const teacher = await Teacher.findOne({ _id: id });
+        res.render('teacherProfileRate', {teacher});
     }catch(e){
         console.log(e)
         res.redirect('/rate/browse')
