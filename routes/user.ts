@@ -9,7 +9,7 @@ const Rating =require('../models/rating')
 Users.get('/:id', isLoggedIn, async(req: Request, res: Response)=>{
     try{
         const user = await User.findOne({_id: req.params.id})
-        const votes = await Rating.find({rater: req.params.id})
+        const votes = await Rating.find({rater: req.params.id}).populate('teacher')
         res.render('user', { user, votes })
     }catch(e){
         console.log(e)
