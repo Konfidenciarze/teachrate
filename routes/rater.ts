@@ -22,7 +22,12 @@ Rate.post('/browse', async (req: Request, res: Response)=>{
 
 Rate.post('/:teacherId/by/:userId', isLoggedIn, async(req: Request, res: Response)=>{
     try{
-        const { material, punctual, passing, comment } = req.body
+        let keys = Object.keys(req.body)
+        let ratings = [0, 0, 0]
+        for(let i = 0; i < 3; i++){
+            let keyVal = keys[i].split('-')
+            ratings[i] = parseInt(keyVal[1])
+        }
         const alreadyVoted = await Rating.findOne({teacher: req.params.teacherId, rater: req.params.userId})
         if(!alreadyVoted){
             const teacher = await Teacher.findOne({_id: req.params.teacherId})
@@ -37,7 +42,7 @@ Rate.post('/:teacherId/by/:userId', isLoggedIn, async(req: Request, res: Respons
             }else{
                 tier = 3
             }
-            const newVote = new Rating({material, punctual, passing, comment, rater: user, teacher, tier})
+            const newVote = new Rating({material: ratings[0], punctual: ratings[1], passing: ratings[2], comment: req.body.comment, rater: user, teacher, tier})
             newVote.save()
         }
         res.redirect('/rate/browse')
@@ -72,6 +77,17 @@ Rate.get('/profile/:id', async(req: Request, res: Response)=>{
         overallStats.passing /= 10 / votes.length
 
         res.render('teacherProfile', {teacher, votes, overallStats});
+    }catch(e){
+        console.log(e)
+        res.redirect('/rate/browse')
+    }
+})
+
+Rate.get('/profile/:id/rate', isLoggedIn, async(req: Request, res: Response)=>{
+    try{
+        const { id } = req.params
+        const teacher = await Teacher.findOne({ _id: id });
+        res.render('teacherProfileRate', {teacher});
     }catch(e){
         console.log(e)
         res.redirect('/rate/browse')
