@@ -1,18 +1,22 @@
 <%- include ('partials/htmlHeader') %>
+<%- include ('partials/htmlNavbar') %>	
+
 <link rel="stylesheet" href="/stylesheets/teacherProfile.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-<div class="d-flex align-items-center min-vh-100 grad-anim">
+<div class="d-flex align-items-center min-vh-100 ">
     <div class="container">
 	    <div class="row h-25 justify-content-center">
 			    <center><h1>Oceń prowadzącego</h1></center>
 		</div>
-        <div class="row formColors d-flex justify-content-center">
-			<div class="col">
-			   <img src="<%= teacher.img%>" alt="photo" style="float: right;">
+        <div class="row formColors justify-content-center" >
+			<div class="col-md-auto">
+			   <img src="<%= teacher.img%>" alt="photo" style="" class="img-fluid h-100">
 			</div>
-			<div class="col align-items-end">
+			<div class="col align-items-end ">
+			<center>
 				<h1><p><%= teacher.pref%> <%= teacher.data%> <%= teacher.post%></p></h1>
 				<p><%= teacher.position%> <%= teacher.faculty%></p>
+			</center>
 			</div>
 		</div>
         <%if(currentUser){%>
@@ -30,15 +34,16 @@
 					        <!--   <input type="number" name="material" id="" min="1" max="5"> -->
 						
 							<div class="star-widget">
-									<input type="radio" name="material-rate" id="material-rate-5">
+									<input type="radio" name="material-5" id="material-rate-5">
 									<label for="material-rate-5" class="fas fa-star"></label>
-									<input type="radio" name="material-rate" id="material-rate-4">
+									<input type="radio" name="material-4" id="material-rate-4">
 									<label for="material-rate-4" class="fas fa-star"></label>
-									<input type="radio" name="material-rate" id="material-rate-3">
+									<input type="radio" name="material-3" id="material-rate-3">
 									<label for="material-rate-3" class="fas fa-star"></label>
-									<input type="radio" name="material-rate" id="material-rate-2">
+									<input type="radio" name="material-2" id="material-rate-2">
 									<label for="material-rate-2" class="fas fa-star"></label>
-									<input type="radio" name="material-rate" id="material-rate-1">
+									<input type="radio" name="material-1" id="material-rate-1">
+
 									<label for="material-rate-1" class="fas fa-star"></label>
 							</div> 
 							
@@ -57,15 +62,16 @@
 					
 					<div class="col-8">
 							<div class="star-widget">
-									<input type="radio" name="punctual-rate" id="punctual-rate-5">
+
+									<input type="radio" name="punctual-5" id="punctual-rate-5">
 									<label for="punctual-rate-5" class="fas fa-star"></label>
-									<input type="radio" name="punctual-rate" id="punctual-rate-4">
+									<input type="radio" name="punctual-4" id="punctual-rate-4">
 									<label for="punctual-rate-4" class="fas fa-star"></label>
-									<input type="radio" name="punctual-rate" id="punctual-rate-3">
+									<input type="radio" name="punctual-3" id="punctual-rate-3">
 									<label for="punctual-rate-3" class="fas fa-star"></label>
-									<input type="radio" name="punctual-rate" id="punctual-rate-2">
+									<input type="radio" name="punctual-2" id="punctual-rate-2">
 									<label for="punctual-rate-2" class="fas fa-star"></label>
-									<input type="radio" name="punctual-rate" id="punctual-rate-1">
+									<input type="radio" name="punctual-1" id="punctual-rate-1">
 									<label for="punctual-rate-1" class="fas fa-star"></label>
 							</div> 
 					</div>
@@ -82,15 +88,15 @@
 					<div class="col-8">
 					<!--   <input type="number" name="passing" id="" min="1" max="5"> -->
 				 			<div class="star-widget">
-								<input type="radio" name="pass-rate" id="pass-rate-5">
+								<input type="radio" name="pass-5" id="pass-rate-5">
 								<label for="pass-rate-5" class="fas fa-star"></label>
-								<input type="radio" name="pass-rate" id="pass-rate-4">
+								<input type="radio" name="pass-4" id="pass-rate-4">
 								<label for="pass-rate-4" class="fas fa-star"></label>
-								<input type="radio" name="pass-rate" id="pass-rate-3">
+								<input type="radio" name="pass-3" id="pass-rate-3">
 								<label for="pass-rate-3" class="fas fa-star"></label>
-								<input type="radio" name="pass-rate" id="pass-rate-2">
+								<input type="radio" name="pass-2" id="pass-rate-2">
 								<label for="pass-rate-2" class="fas fa-star"></label>
-								<input type="radio" name="pass-rate" id="pass-rate-1">
+								<input type="radio" name="pass-1" id="pass-rate-1">
 								<label for="pass-rate-1" class="fas fa-star"></label>
 					
 							</div> 

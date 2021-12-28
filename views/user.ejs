@@ -1,9 +1,7 @@
 <%- include ('partials/htmlHeader') %>
+<%- include ('partials/htmlNavbar') %>	
 
 	<div class="container">
-		<div class="row h-15">
-		  Tu będzie navbar
-		 </div>
 		 <div class="row h-25">
 		    <h1><center>Witaj <%= user.username %></center></h1>	<br>
 			<center><button type="button" class="btn btn-login ZalogujSubmit w-25 h-50"  onclick="location.href='/rate/browse'" value="Zacznij Oceniać">Zacznij Oceniać</button></center>
@@ -24,7 +22,7 @@
 					<img src="<%= votes[i].teacher.img%>" alt="photo" style="" class="img-fluid h-75">
 				</div>
 				<div class="col align-items-end">
-				<h2><span><%= votes[i].teacher.pref%></span><p><%= votes[i].teacher.data%></p><span><%= votes[i].teacher.post%></span></h2>
+				<h2><p><%= votes[i].teacher.pref%> <%= votes[i].teacher.data%></p><span><%= votes[i].teacher.post%></span></h2>
 				<h4><span><%= votes[i].teacher.faculty%></span></h4>
 				<h3>
 					<p>Tłumaczenie materiału: <%= votes[i].material%>/5</p>
