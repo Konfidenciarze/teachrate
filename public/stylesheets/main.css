@@ -36,9 +36,13 @@ input[type=password]
 {
 	height: 15%;
 }
-.h-85
+.h-20
 {
-	height: 85%;
+	height: 20%;
+}
+.h-80
+{
+	height: 80%;
 }
 .btn-login
 {
