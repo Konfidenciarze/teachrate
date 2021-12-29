@@ -56,3 +56,7 @@ input[type=password]
 .searchResult:nth-child(odd) {
 	background-color: #f5dc69;
 }
+
+.biedaHidden{
+	display: none;
+}

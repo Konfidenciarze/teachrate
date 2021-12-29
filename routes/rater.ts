@@ -6,8 +6,9 @@ const Teacher = require('../models/teacher')
 const Rating = require('../models/rating')
 const User = require('../models/user')
 
-Rate.get('/', (req: Request, res: Response)=>{
-    res.render('browser', {teachers: []});
+Rate.get('/', async(req: Request, res: Response)=>{
+    const faculties = await Teacher.distinct('faculty')
+    res.render('browser', {teachers: [], faculties});
 })
 
 Rate.get('/browse', (req: Request, res: Response)=>{
@@ -15,9 +16,16 @@ Rate.get('/browse', (req: Request, res: Response)=>{
 })
 
 Rate.post('/browse', async (req: Request, res: Response)=>{
-    const {name} = req.body;
-    const teachers = await Teacher.find({data: {"$regex": name, '$options' : 'i'}})
-    res.render('browser', {teachers});
+    let teachers;
+    if(req.body.mode === 'data'){
+        const {name} = req.body;
+        teachers = await Teacher.find({data: {"$regex": name, '$options' : 'i'}})
+    }else if(req.body.mode === 'faculty'){
+        const {faculty} = req.body
+        teachers = await Teacher.find({faculty})
+    }
+    const faculties = await Teacher.distinct('faculty')
+    res.render('browser', {teachers, faculties});
 })
 
 Rate.post('/:teacherId/by/:userId', isLoggedIn, async(req: Request, res: Response)=>{
