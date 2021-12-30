@@ -9,9 +9,11 @@ body{
 {
 	padding: 0;
 }
+
 .formColors
 {
 	background-color: #DEA252;
+	color: black;
 }
 select {
 display: block;
@@ -44,19 +46,32 @@ input[type=password]
 {
 	height: 80%;
 }
+/*
 .btn-login
 {
 	background-color: #FEFFB9;
 	color: black;
 }
+*/
 .img-teacher
 {
 	width: 50%;
 }
 .searchResult:nth-child(even) {
-    background-color: #DEA252;
+	background-color: #E9CC32;
 }
 
 .searchResult:nth-child(odd) {
-	background-color: #f5dc69;
+    background-color: #F8EC9F;
 }
+.btn-teach
+{
+color: #000000;
+background-color: #FEFFB9;	
+border-color: #000000;
+}
+.teacher-colors
+{
+	background-color: #FCFF7B;
+}
+
