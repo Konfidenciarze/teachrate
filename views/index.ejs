@@ -3,19 +3,19 @@
 
 	<div class="container">
 
-		  <div class="row d-flex h-85">
+		  <div class="row d-flex h-80">
 			<div class="col col-lg-4 d-flex flex-column justify-content-center align-items-center"> 
 				<h1>OCEŃ SWOICH PROWADZĄCYCH<h1>
 				<h3>Szybko, łatwo, bezboleśnie.</h3>
 					<%if(!currentUser){%>
 					<div class="col align-self-center">
-						<button type="button" class="btn" style='background-color:#E08751' onclick="location.href='/login'" value="Zaloguj się">Zaloguj się</button>
-						<button type="button" class="btn" style='background-color:#E08751' onclick="location.href='/register'" value="Zarejestruj się">Zarejestruj się</button>
+						<button type="button" class="btn btn-teach" onclick="location.href='/register'" value="Zarejestruj się">Zarejestruj się</button>
+					    <button type="button" class="btn btn-teach" onclick="location.href='/rate/browse'" value="Wyszukaj prowadzącego">Wyszukaj prowadzącego</button>
 					</div>
 					<%}else{%>
 						<div class="col align-self-center">
-							<button type="button" class="btn" style='background-color:#E08751' onclick="location.href='/user/<%=currentUser._id%>'" value="Profil">Profil</button>
-							<button type="button" class="btn" style='background-color:#E08751' onclick="location.href='/rate/browse'" value="Zacznij Oceniać">Zacznij Oceniać</button>
+							<button type="button" class="btn btn-teach" onclick="location.href='/user/<%=currentUser._id%>'" value="Profil">Profil</button>
+							<button type="button" class="btn btn-teach" onclick="location.href='/rate/browse'" value="Zacznij Oceniać">Zacznij Oceniać</button>
 						</div>
 					<%}%>
 				</div>

@@ -8,12 +8,12 @@
 		</div>
 		<div class="col-lg-6">
 			<span>
-				<div class="formColors borderList" style="padding: 40px">	
+				<div class="borderList" style="padding: 40px">	
 					<form action="/register" onsubmit="return validateRegister()" method="POST" id="reg-form">					
 						<center><span id="informacja"></span></center>
 
 						<div class="form-floating mb-3" aria-describedby="LoginInfo"> 
-							<input type="text" name='username' class="form-control" id="login" placeholder="Login"  required>
+							<input type="text" name='username' class="form-control rounded-pill" id="login" placeholder="Login"  required>
 							<label for="login">Email</label>
 									<div id="LoginInfo" class="form-text text-dark">
 										Wpisz swoj adres e-mail.
@@ -23,7 +23,7 @@
 						</div>
 						
 						<div class="form-floating mb-3" aria-describedby="PasswordInfo">
-							<input type="password" name='password' class="form-control" id="newPassword1" placeholder="Password" minlength="8" maxlength="32"  required>
+							<input type="password" name='password' class="form-control rounded-pill" id="newPassword1" placeholder="Password" minlength="8" maxlength="32"  required>
 							<label for="haslo">Hasło</label>
 									<div id="PasswordInfo" class="form-text text-dark">
 										Hasło nie może zawierać spacji i musi zawierać od 8 do 32 znaków.
@@ -33,7 +33,7 @@
 						</div>
 
 						<div class="form-floating mb-3">
-							<input type="password" class="form-control text-dark" id="newPassword2" placeholder="Confirm password" minlength="8" maxlength="32" required>
+							<input type="password" class="form-control text-dark rounded-pill" id="newPassword2" placeholder="Confirm password" minlength="8" maxlength="32" required>
 							<label for="haslo2">Zatwierdź Hasło</label>
 							<span class="validateInfo" id="ValidatePass2Info" >
 							</span>
@@ -55,7 +55,7 @@
 						<input type="checkbox" required>
 						Akceptuję warunki <a href="https://www.motherfuckingwebsite.com" target="_blank"> regulaminu </a>
 						<center>
-							<button class="btn btn-outline-dark" type="submit">Zarejestruj się</button>
+							<button class="btn btn-teach col-6"" type="submit">Zarejestruj się</button>
 						</center>
 						
 					</form>

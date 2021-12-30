@@ -30,7 +30,11 @@
 				<h3><p><%= teachers[i].pref%> <%= teachers[i].data%> <%= teachers[i].post%></p>
 					<p><%= teachers[i].position%> <%= teachers[i].faculty%></p>
 					<br>
-					<a href="/rate/profile/<%= teachers[i]._id%>"><button class="btn btn-login btn-lg ZalogujSubmit">OCEŃ</button></a>
+					<a href="/rate/profile/<%= teachers[i]._id%>"><button class="btn btn-teach btn-lg ZalogujSubmit">WYŚWIETL</button></a>
+					
+					<%if(currentUser){%>
+					<a href="/rate/profile/<%= teachers[i]._id%>/rate"><button class="btn btn-teach btn-lg ZalogujSubmit">OCEŃ</button></a>
+					<%}%>
 				</div>
 		</div>
 		<%}%>
