@@ -10,32 +10,42 @@
 			<div class="col-md-auto">
 			   <img src="<%= teacher.img%>" alt="photo" class="img-fluid h-100">
 			</div>
-			<div class="col align-items-end ">
+			<div class="col align-items-end "> <!-- opacity -->
 			<center>
 				<h1><p><%= teacher.pref%> <%= teacher.data%> <%= teacher.post%></p></h1>
 				<p><%= teacher.position%> <%= teacher.faculty%></p>
 					<%if(currentUser){%>
 						<%if(!voted){%>						
 							<a href="/rate/profile/<%= teacher._id%>/rate"><button class="btn btn-teach btn-lg ZalogujSubmit">OCEŃ</button></a>
+						<%}else{%>
+							<h3>Twoja ocena:</h3>
+							<h4>
+								<p>Tłumaczenie materiału: <%= voted.material%>/5</p>
+								<p>Punktualność wykładowcy: <%= voted.punctual%>/5</p>
+								<p>Łatwość zaliczenia: <%= voted.passing%>/5</p>
+							</h4>
 						<%}%>
 					<%}%>			
 			
 			</center>
 			</div>
 		</div>
- 		<div class="row h-50 formColors">
+ 		<div class="row h-50 formColors"> <!-- ogólna ocena -->
 
 		<br>
-        <%= votes %>
+        <!-- <%= votes %> -->
 		<br><br>
 		
 		<br><br>
-		<h1><center>
-		Tłumaczenie materiału: <%= overallStats.material%>% <br>
+		
+		<center>
+		<h1>Średnie oceny:<br><br>
 
-		Punktualność wykładowcy: <%= overallStats.punctual%>% <br>
+		Tłumaczenie materiału: <%= overallStats.material%>/5 <br>
 
-		Łatwość zaliczenia: <%= overallStats.passing%>% <br>
+		Punktualność wykładowcy: <%= overallStats.punctual%>/5 <br>
+
+		Łatwość zaliczenia: <%= overallStats.passing%>/5 <br>
 		</h1></center>
 
 		</div>
