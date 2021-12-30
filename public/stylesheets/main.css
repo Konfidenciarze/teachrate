@@ -73,3 +73,22 @@ border-color: #000000;
 {
 	background-color: #FCFF7B;
 }
+.biedaHidden
+{
+	display: none;
+}
+/* Tutaj trzeba obgadać z Michałem kolor z formColors dla teacher profile
+.formColors.opacity
+{
+	opacity: 0.85;
+}*/
+.btn-outline-teach
+{
+	color: #000000;
+	border-color: #000000;
+}
+.btn-outline-teach:hover
+{
+	color: #000000;
+	background-color: #FEFFB9;	
+}
