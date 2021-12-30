@@ -2,22 +2,27 @@
 	<div class="row align-items-center h-20 justify-content-end">
 		<nav class="navbar navbar-expand-sm">
 		  <div class="container-fluid">
-		   <a class="navbar-brand" href="/"> <button type="button" class="btn btn-outline-dark btn-lg">HOME</button></a>
+		   <a class="navbar-brand" href="/"> <button type="button" class="btn btn-outline-teach btn-lg">HOME</button></a>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
 			<% if(!currentUser){ %>
 			  <ul class="navbar-nav mb-auto mb-2 mb-lg-0">
 				<li class="nav-item">
 				  <a class="nav-link active" aria-current="page" href="/login">
-					<button type="button" class="btn btn-outline-dark btn-lg">Zaloguj się</button>
+					<button type="button" class="btn btn-outline-teach btn-lg">Zaloguj się</button>
 				  </a>
 				</li>
 			  </ul>
 			  <% } else { %>
 			  <ul class="navbar-nav mb-auto mb-2 mb-lg-0">
+			  	<li class="nav-item">
+				  <a class="nav-link active" aria-current="page" href="/user/<%=currentUser._id%>">
+					<button type="button" class="btn btn-outline-teach btn-lg" value="Profil">Profil</button>
+				  </a>
+				</li>
 				<li class="nav-item">
 				  <a class="nav-link active" aria-current="page" href="/logout">
-					<button type="button" class="btn btn-outline-dark btn-lg">Wyloguj się</button>
+					<button type="button" class="btn btn-outline-teach btn-lg">Wyloguj się</button>
 				  </a>
 				</li>
 			  </ul>
