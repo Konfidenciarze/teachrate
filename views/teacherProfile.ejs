@@ -14,9 +14,10 @@
 			<center>
 				<h1><p><%= teacher.pref%> <%= teacher.data%> <%= teacher.post%></p></h1>
 				<p><%= teacher.position%> <%= teacher.faculty%></p>
-				
 					<%if(currentUser){%>
-					<a href="/rate/profile/<%= teacher._id%>/rate"><button class="btn btn-teach btn-lg ZalogujSubmit">OCEŃ</button></a>
+						<%if(!voted){%>						
+							<a href="/rate/profile/<%= teacher._id%>/rate"><button class="btn btn-teach btn-lg ZalogujSubmit">OCEŃ</button></a>
+						<%}%>
 					<%}%>			
 			
 			</center>
