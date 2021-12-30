@@ -60,7 +60,6 @@ input[type=password]
 .searchResult:nth-child(even) {
 	background-color: #E9CC32;
 }
-
 .searchResult:nth-child(odd) {
     background-color: #F8EC9F;
 }
@@ -74,4 +73,3 @@ border-color: #000000;
 {
 	background-color: #FCFF7B;
 }
-

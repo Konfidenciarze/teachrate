@@ -7,14 +7,24 @@
 		</div>
 		<div class="form-floating mb-3"> 				
 			<form action="/rate/browse" method="post">
-				<input type="text" class="form-control" id="floatingInput" placeholder="Imię, nazwisko lub wydział" name='name'>
-				<button type="submit" class="btn btn-teach ZalogujSubmit">Szukaj</button>
+				<input type="text" class="form-control" placeholder="Imię lub nazwisko" name='name' id="personalData">
+				<select name="faculty" id="faculty" class="form-control">
+					<%for(let i = 0; i < faculties.length; i++){%>
+						<option value="<%=faculties[i]%>"><%=faculties[i]%></option>
+					<%}%>
+				</select>
+				<select onchange="changeVisibility()" name="mode">
+					<option value="data">Imie lub nazwisko</option>
+					<option value="faculty">Jednostka</option>
+				</select>
+				<button type="submit" class="btn btn-login ZalogujSubmit">Szukaj</button>
 			</form>
+			
 		</div>
 		<%for(let i =0; i < teachers.length; i++){%>
 		<div class="row justify-content-center searchResult align-items-center">
 				<div class="col-md-auto">
-					<img src="<%= teachers[i].img%>" alt="photo" style="" class="img-fluid h-75">
+					<img src="<%= teachers[i].img%>" alt="photo" class="img-fluid h-75">
 				</div>
 				<div class="col align-items-end">
 				<h3><p><%= teachers[i].pref%> <%= teachers[i].data%> <%= teachers[i].post%></p>
@@ -30,4 +40,5 @@
 		<%}%>
 	</div>
 </div>
+<%- include ('partials/formDisplay') %>
 <%- include ('partials/htmlFooter') %>

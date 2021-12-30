@@ -6,8 +6,9 @@ const Teacher = require('../models/teacher')
 const Rating = require('../models/rating')
 const User = require('../models/user')
 
-Rate.get('/', (req: Request, res: Response)=>{
-    res.render('browser', {teachers: []});
+Rate.get('/', async(req: Request, res: Response)=>{
+    const faculties = await Teacher.distinct('faculty')
+    res.render('browser', {teachers: [], faculties});
 })
 
 Rate.get('/browse', (req: Request, res: Response)=>{
@@ -15,9 +16,36 @@ Rate.get('/browse', (req: Request, res: Response)=>{
 })
 
 Rate.post('/browse', async (req: Request, res: Response)=>{
-    const {name} = req.body;
-    const teachers = await Teacher.find({data: {"$regex": name, '$options' : 'i'}})
-    res.render('browser', {teachers});
+    let teachers;
+    const ratedTeachers = []
+    const teachersToVoteOn = []
+    const faculties = await Teacher.distinct('faculty')
+    if(req.body.mode === 'data'){
+        const {name} = req.body;
+        teachers = await Teacher.find({data: {"$regex": name, '$options' : 'i'}})  
+    }else if(req.body.mode === 'faculty'){
+        const {faculty} = req.body
+        teachers = await Teacher.find({faculty})
+    }
+    if(res.locals.currentUser){
+        const ratings = await Rating.find({rater: res.locals.currentUser._id}).populate('teacher')
+        for(let i = 0; i < teachers.length; i++){
+            let hit = false
+            for(let j = 0; j < ratings.length; j++){
+                if(ratings[j].teacher._id.toString() == teachers[i]._id.toString()){
+                    ratedTeachers.push(teachers[i])
+                    hit = true
+                    console.log('hit')
+                    break
+                }
+            }
+            if(!hit)
+                teachersToVoteOn.push(teachers[i])
+        }
+        res.render('browser', {ratedTeachers, teachersToVoteOn, faculties});
+    }else{
+        res.render('browser', {ratedTeachers: teachers, teachersToVoteOn: [], faculties});
+    }
 })
 
 Rate.post('/:teacherId/by/:userId', isLoggedIn, async(req: Request, res: Response)=>{
@@ -65,6 +93,10 @@ Rate.get('/profile/:id', async(req: Request, res: Response)=>{
             .populate('rater')
             .sort({ tier: -1 })
 
+        let voted = undefined
+        if(res.locals.currentUser){
+            voted = await Rating.findOne({teacher: id, rater: res.locals.currentUser._id})
+        }
         for(let i = 0; i < votes.length; i++){
             let t = votes[i].tier
             overallStats.material += votes[i].material * t
@@ -75,8 +107,8 @@ Rate.get('/profile/:id', async(req: Request, res: Response)=>{
         overallStats.material /= 10 / votes.length
         overallStats.punctual /= 10 / votes.length
         overallStats.passing /= 10 / votes.length
-
-        res.render('teacherProfile', {teacher, votes, overallStats});
+        console.log(voted)
+        res.render('teacherProfile', {teacher, votes, overallStats, voted});
     }catch(e){
         console.log(e)
         res.redirect('/rate/browse')
