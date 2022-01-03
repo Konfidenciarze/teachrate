@@ -17,27 +17,41 @@
 					<option value="data">Imie lub nazwisko</option>
 					<option value="faculty">Jednostka</option>
 				</select>
-				<button type="submit" class="btn btn-login ZalogujSubmit">Szukaj</button>
+				<button type="submit" class="btn btn-teach ZalogujSubmit">Szukaj</button>
 			</form>
 			
 		</div>
-		<%for(let i =0; i < teachers.length; i++){%>
-		<div class="row justify-content-center searchResult align-items-center">
-				<div class="col-md-auto">
-					<img src="<%= teachers[i].img%>" alt="photo" class="img-fluid h-75">
-				</div>
-				<div class="col align-items-end">
-				<h3><p><%= teachers[i].pref%> <%= teachers[i].data%> <%= teachers[i].post%></p>
-					<p><%= teachers[i].position%> <%= teachers[i].faculty%></p>
-					<br>
-					<a href="/rate/profile/<%= teachers[i]._id%>"><button class="btn btn-teach btn-lg ZalogujSubmit">WYŚWIETL</button></a>
-					
+			<%for(let i =0; i < ratedTeachers.length; i++){%>
+			<div class="row justify-content-center searchResult align-items-center">
+					<div class="col-md-auto">
+						<img src="<%= ratedTeachers[i].img%>" alt="photo" class="img-fluid h-75">
+					</div>
+					<div class="col align-items-end">
+					<h3><p><%= ratedTeachers[i].pref%> <%= ratedTeachers[i].data%> <%= ratedTeachers[i].post%></p>
+						<p><%= ratedTeachers[i].position%> <%= ratedTeachers[i].faculty%></p>
+						<br>
+						<a href="/rate/profile/<%= ratedTeachers[i]._id%>"><button class="btn btn-teach btn-lg ZalogujSubmit">WYŚWIETL</button></a>
+					</div>
+			</div>
+			<%}%>
+			<%for(let i =0; i < teachersToVoteOn.length; i++){%>
+			<div class="row justify-content-center searchResult align-items-center">
+					<div class="col-md-auto">
+						<img src="<%= teachersToVoteOn[i].img%>" alt="photo" class="img-fluid h-75">
+					</div>
+					<div class="col align-items-end">
+					<h3><p><%= teachersToVoteOn[i].pref%> <%= teachersToVoteOn[i].data%> <%= teachersToVoteOn[i].post%></p>
+						<p><%= teachersToVoteOn[i].position%> <%= teachersToVoteOn[i].faculty%></p>
+						<br>
+						<a href="/rate/profile/<%= teachersToVoteOn[i]._id%>"><button class="btn btn-teach btn-lg ZalogujSubmit">WYŚWIETL</button></a>
 					<%if(currentUser){%>
-					<a href="/rate/profile/<%= teachers[i]._id%>/rate"><button class="btn btn-teach btn-lg ZalogujSubmit">OCEŃ</button></a>
+						<a href="/rate/profile/<%= teachersToVoteOn[i]._id%>/rate"><button class="btn btn-teach btn-lg ZalogujSubmit">OCEŃ</button></a>
 					<%}%>
-				</div>
-		</div>
-		<%}%>
+					</div>
+			</div>
+			<%}%>
+
+		
 	</div>
 </div>
 <%- include ('partials/formDisplay') %>
