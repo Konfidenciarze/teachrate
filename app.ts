@@ -14,6 +14,7 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const methodOverride = require('method-override')
 const app = express()
+const flash = require('connect-flash');
 
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/teachrater'
 
@@ -58,7 +59,11 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.use(flash());
+
 app.use((req: Request, res: Response, next: NextFunction) => {
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
     res.locals.currentUser = req.user;
     next();
 })
