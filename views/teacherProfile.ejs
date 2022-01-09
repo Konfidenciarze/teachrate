@@ -3,51 +3,57 @@
 
 <link rel="stylesheet" href="/stylesheets/teacherProfile.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-<div class="d-flex align-items-center min-vh-100 ">
+<div class="d-flex align-items-center min-vh-80">
     <div class="container">
 
         <div class="row formColors justify-content-center" >
 			<div class="col-md-auto">
 			   <img src="<%= teacher.img%>" alt="photo" class="img-fluid h-100">
 			</div>
-			<div class="col align-items-end "> <!-- opacity -->
+			<div class="col-6 align-items-end "> 
 			<center>
 				<h1><p><%= teacher.pref%> <%= teacher.data%> <%= teacher.post%></p></h1>
-				<p><%= teacher.position%> <%= teacher.faculty%></p>
+				<h4><p><%= teacher.position%> <%= teacher.faculty%></p></h4>
 					<%if(currentUser){%>
 						<%if(!voted){%>						
-							<a href="/rate/profile/<%= teacher._id%>/rate"><button class="btn btn-teach btn-lg ZalogujSubmit">OCEŃ</button></a>
+							<a href="/rate/profile/<%= teacher._id%>/rate"><button class="btn btn-teach btn-lg">OCEŃ</button></a>
 						<%}else{%>
 							<h3>Twoja ocena:</h3>
 							<h4>
 								<p>Tłumaczenie materiału: <%= voted.material%>/5</p>
 								<p>Punktualność wykładowcy: <%= voted.punctual%>/5</p>
 								<p>Łatwość zaliczenia: <%= voted.passing%>/5</p>
+								<% if(voted.comment != '') { %>
+								<p style="word-wrap: break-word;">Komentarz: <%= voted.comment %></p>
+								<%}%>
 							</h4>
-								<p style="word-wrap: break-word;"> <%= voted.comment %></p>
 						<%}%>
 					<%}%>			
 			
 			</center>
 			</div>
 		</div>
- 		<div class="row h-50 formColors"> <!-- ogólna ocena -->
-
+ 		<div class="row h-50 formColors"> 
 		<br>
-        <!-- <%= votes %> -->
 		<br><br>
-		
 		<br><br>
-		
 		<center>
+		
+		<%if(!Number.isNaN(overallStats.material)) { %>
 		<h1>Średnie oceny:<br><br>
-
+		
 		Tłumaczenie materiału: <%= overallStats.material%>/5 <br>
 
 		Punktualność wykładowcy: <%= overallStats.punctual%>/5 <br>
 
 		Łatwość zaliczenia: <%= overallStats.passing%>/5 <br>
-		</h1></center>
+		</h1>
+		<%} else {%>
+		
+		<br><h1> Ten wykładowca nie ma jeszcze wystawionej żadnej oceny. Możesz go ocenić jako pierwszy!</h1><br>
+		<%}%>
+		
+		</center>
 
 		</div>
 		</span>

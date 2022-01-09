@@ -3,18 +3,20 @@
 
 <link rel="stylesheet" href="/stylesheets/teacherProfile.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-<div class="d-flex align-items-center min-vh-100 grad-anim">
+<div class="d-flex align-items-center min-vh-80">
     <div class="container">
 	    <div class="row h-25 justify-content-center">
 			    <center><h1>Oceń prowadzącego</h1></center>
 		</div>
         <div class="row formColors d-flex justify-content-center">
-			<div class="col">
+			<div class="col-md-auto">
 			   <img src="<%= teacher.img%>" alt="photo" style="float: right;">
 			</div>
-			<div class="col align-items-end">
+			<div class="col-6 align-items-end">
+				<center>
 				<h1><p><%= teacher.pref%> <%= teacher.data%> <%= teacher.post%></p></h1>
-				<p><%= teacher.position%> <%= teacher.faculty%></p>
+				<h4><p><%= teacher.position%> <%= teacher.faculty%></p></h4>
+				</center>
 			</div>
 		</div>
         <div class="row h-25 formColors">
@@ -22,14 +24,10 @@
                 <div class="row d-flex">
                     <div class="col-8 d-flex justify-content-end">
                     Jak oceniasz tłumaczenie materiału?&nbsp&nbsp&nbsp<br>
-                    
-                <!--	Jak tłumaczy materiał -->
                     </div>
                     
                     <div class="w-100"></div>
-                    <div class="col-8">
-                            <!--   <input type="number" name="material" id="" min="1" max="5"> -->
-                        
+                    <div class="col-8">                        
                             <div class="star-widget">
                                     <input type="radio" name="material-5" id="material-rate-5">
                                     <label for="material-rate-5" class="fas fa-star"></label>
@@ -41,18 +39,13 @@
                                     <label for="material-rate-2" class="fas fa-star"></label>
                                     <input type="radio" name="material-1" id="material-rate-1">
                                     <label for="material-rate-1" class="fas fa-star"></label>
-                            </div> 
-                            
-                        
+                            </div>                                             
                     </div>
                 </div>
                 <div class="row d-flex">
                     <div class="col-8 d-flex justify-content-end">
                     Jak oceniasz punktualność wykładowcy?
-                    
-                    <!-- <br>Jest punktualny/a -->
                     </div>
-                        <!--   <input type="number" name="punctual" id="" min="1" max="5"> -->
                     <div class="w-100"></div>
                     
                     <div class="col-8">
@@ -73,14 +66,12 @@
                 <div class="row d-flex">
                 
                     <div class="col-8 d-flex justify-content-end">
-                <!-- <br>Łatwo u niego/niej zaliczyć -->
                     Jak oceniasz łatwość zaliczenia?&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                     </div>
                     
                     <div class="w-100"></div>
                     
                     <div class="col-8">
-                    <!--   <input type="number" name="passing" id="" min="1" max="5"> -->
                              <div class="star-widget">
                                 <input type="radio" name="pass-5" id="pass-rate-5">
                                 <label for="pass-rate-5" class="fas fa-star"></label>
@@ -100,7 +91,7 @@
                     <br><p><center>Masz coś do dodania? Podziel się opinią</center></p>
                     <center><textarea name="comment" id="" maxlength="255" minlength="0" cols="80" rows="10" class="form-control"></textarea></center>
                 </div>
-                <button type="submit" class="btn btn-teach ZalogujSubmit">Wyślij</button>
+                <button type="submit" class="btn btn-teach">Wyślij</button>
             </form>
         </div>
     </div>

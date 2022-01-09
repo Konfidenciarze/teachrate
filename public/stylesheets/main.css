@@ -46,13 +46,6 @@ input[type=password]
 {
 	height: 80%;
 }
-/*
-.btn-login
-{
-	background-color: #FEFFB9;
-	color: black;
-}
-*/
 .img-teacher
 {
 	width: 50%;
@@ -77,11 +70,6 @@ border-color: #000000;
 {
 	display: none;
 }
-/* Tutaj trzeba obgadać z Michałem kolor z formColors dla teacher profile
-.formColors.opacity
-{
-	opacity: 0.85;
-}*/
 .btn-outline-teach
 {
 	color: #000000;
@@ -91,4 +79,10 @@ border-color: #000000;
 {
 	color: #000000;
 	background-color: #FEFFB9;	
+}
+.min-vh-80 {
+  min-height: 80vh !important;
+}
+.min-vh-70 {
+  min-height: 70vh !important;
 }

@@ -4,18 +4,16 @@
 	<div class="container">
 		 <div class="row h-25">
 		    <h1><center>Witaj <%= user.username %></center></h1>	<br>
-			<center><button type="button" class="btn btn-teach ZalogujSubmit w-25 h-50"  onclick="location.href='/rate/browse'" value="Zacznij Oceniać">Wyszukaj prowadzącego</button></center>
+			<center><button type="button" class="btn btn-teach w-25 h-50"  onclick="location.href='/rate/browse'" value="Zacznij Oceniać">Wyszukaj prowadzącego</button></center>
 		 </div>
-		  
-<!--    <h4>dane usera</h4>
-    <%= user%> -->
+	
+	<%if(votes.length!=0){%>
+    <center><h5>Ostatnio ocenieni przez Ciebie prowadzący</h5></center>
+	<%}else{%>
+	<center><h5>Tutaj znajdą się ocenieni przez Ciebie prowadzący</h5></center>
+	<%}%>
 	
 	
-    <center><h5>ostatnio ocenieni przez Ciebie prowadzący</h5></center>
-  
-
-<!--    <%= votes%>  -->
-  
 	<%for(let i =0; i < votes.length; i++){%>
 		<div class="row justify-content-center searchResult align-items-center">
 				<div class="col-md-auto">
@@ -31,8 +29,10 @@
 				</h3>
 				</div>
 				<div class="col align-items-end">
+				<% if(votes[i].comment != '') { %>
 				<h3>Komentarz: <span style="word-wrap: break-word;"> <%= votes[i].comment %> </span> </h3>
-				<a href="/rate/profile/<%= votes[i].teacher._id%>"><button class="btn btn-teach btn-lg ZalogujSubmit">WYŚWIETL</button></a>
+				<%}%>
+				<a href="/rate/profile/<%= votes[i].teacher._id%>"><button class="btn btn-teach btn-lg">WYŚWIETL</button></a>
 				</div>
 		</div>
 		<%}%>

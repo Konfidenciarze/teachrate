@@ -1,6 +1,6 @@
 <%- include ('partials/htmlHeader') %>
 <%- include ('partials/htmlNavbar') %>	
-<div class="d-flex align-items-center min-vh-100 ">
+<div class="d-flex align-items-center min-vh-80 ">
     <div class="container">
 		<div class="row h-25 justify-content-center">
 			    <center><h1>Wyszukaj prowadzącego</h1></center>
@@ -17,7 +17,7 @@
 					<option value="data">Imie lub nazwisko</option>
 					<option value="faculty">Jednostka</option>
 				</select>
-				<button type="submit" class="btn btn-teach ZalogujSubmit">Szukaj</button>
+				<button type="submit" class="btn btn-teach">Szukaj</button>
 			</form>
 			
 		</div>
@@ -30,7 +30,7 @@
 					<h3><p><%= ratedTeachers[i].pref%> <%= ratedTeachers[i].data%> <%= ratedTeachers[i].post%></p>
 						<p><%= ratedTeachers[i].position%> <%= ratedTeachers[i].faculty%></p>
 						<br>
-						<a href="/rate/profile/<%= ratedTeachers[i]._id%>"><button class="btn btn-teach btn-lg ZalogujSubmit">WYŚWIETL</button></a>
+						<a href="/rate/profile/<%= ratedTeachers[i]._id%>"><button class="btn btn-teach btn-lg">WYŚWIETL</button></a>
 					</div>
 			</div>
 			<%}%>
@@ -43,9 +43,9 @@
 					<h3><p><%= teachersToVoteOn[i].pref%> <%= teachersToVoteOn[i].data%> <%= teachersToVoteOn[i].post%></p>
 						<p><%= teachersToVoteOn[i].position%> <%= teachersToVoteOn[i].faculty%></p>
 						<br>
-						<a href="/rate/profile/<%= teachersToVoteOn[i]._id%>"><button class="btn btn-teach btn-lg ZalogujSubmit">WYŚWIETL</button></a>
+						<a href="/rate/profile/<%= teachersToVoteOn[i]._id%>"><button class="btn btn-teach btn-lg">WYŚWIETL</button></a>
 					<%if(currentUser){%>
-						<a href="/rate/profile/<%= teachersToVoteOn[i]._id%>/rate"><button class="btn btn-teach btn-lg ZalogujSubmit">OCEŃ</button></a>
+						<a href="/rate/profile/<%= teachersToVoteOn[i]._id%>/rate"><button class="btn btn-teach btn-lg">OCEŃ</button></a>
 					<%}%>
 					</div>
 			</div>
