@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Konfidenciarze/teachrate#readme",
   "devDependencies": {
     "@types/express": "^4.17.13",
+    "@types/express-session": "^1.17.4",
     "@types/node": "^16.11.9",
     "@types/passport": "^1.0.7",
     "nodemon": "^2.0.14",

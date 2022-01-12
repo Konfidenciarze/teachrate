@@ -56,6 +56,9 @@ Rate.post('/browse', browserFormValidator, async (req: Request, res: Response)=>
 Rate.post('/:teacherId/by/:userId', isLoggedIn, async(req: Request, res: Response)=>{
     try{
         let keys = Object.keys(req.body)
+        if(keys.length !== 4){
+            return res.redirect('/rate/browse')
+        }
         let ratings = [0, 0, 0]
         for(let i = 0; i < 3; i++){
             let keyVal = keys[i].split('-')
