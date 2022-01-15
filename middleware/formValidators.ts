@@ -44,7 +44,7 @@ async function registerFormValidator(req: Request, res: Response, next: NextFunc
     const faculties = await Teacher.distinct('faculty')
     const { username, password, password2, prime, secondary } = req.body;
     const loginregex= /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if(!username || !password || !password2 || !prime || !secondary){
+    if(!username || !password || !password2 || prime ===undefined || secondary === undefined){
         return res.redirect('/register')
     }
     
@@ -64,21 +64,12 @@ async function registerFormValidator(req: Request, res: Response, next: NextFunc
         req.flash('error', 'Wprowadzone hasła się różnią')
         return res.redirect('/register')
     }
-
-    if(prime !== ''){
-        if(!faculties.includes(prime)){
-            req.flash('error', 'Błąd wprowadzonej jednostki')
-            return res.redirect('/register')
-        }
+    if((faculties.includes(prime) || prime === '') && (faculties.includes(secondary) || secondary === '')){
+        return next();
+    }else{
+        req.flash('error', 'Błąd wprowadzonej jednostki')
+        return res.redirect('/register')
     }
-
-    if(secondary !== ''){
-        if(!faculties.includes(secondary)){
-            req.flash('error', 'Błąd wprowadzonej jednostki')
-            return res.redirect('/register')
-        }
-    }
-    return next();
 }
 
 export { browserFormValidator, loginFormValidator, registerFormValidator }
